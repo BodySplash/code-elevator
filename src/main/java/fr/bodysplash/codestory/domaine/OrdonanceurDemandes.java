@@ -1,5 +1,7 @@
 package fr.bodysplash.codestory.domaine;
 
+import com.google.common.collect.Lists;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,9 +42,6 @@ public class OrdonanceurDemandes {
             return Optional.empty();
         }
         Integer demandeSuivante = demandes.remove(0);
-        if(demandeSuivante == étageCourant && !demandes.isEmpty()) {
-            demandeSuivante = demandes.remove(0);
-        }
         List<Integer> chemin = cheminVers(étageCourant, demandeSuivante);
         if(chemin.get(0) != demandeSuivante) {
             Integer suivant = chemin.get(0);
@@ -53,6 +52,9 @@ public class OrdonanceurDemandes {
     }
 
     private List<Integer> cheminVers(Integer étageCourant, Integer demandeSuivante) {
+        if(étageCourant == demandeSuivante) {
+            return Lists.newArrayList(étageCourant);
+        }
         ArrayList<Integer> result = new ArrayList<>();
         Direction direction = directionEntre(étageCourant, demandeSuivante);
         for(int étage = direction.suivant(étageCourant);étage != demandeSuivante; étage = direction.suivant(étage) ) {

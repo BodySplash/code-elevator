@@ -107,29 +107,5 @@ public class AscenseurTest {
         assertEquals("NOTHING", action);
     }
 
-    @Test
-    public void peutTrierLaDescente() {
-        Ascenseur ascenseur = new Ascenseur();
-        ascenseur.appeléAu(4, "UP");
-        monteAu3(ascenseur);
-        ascenseur.appeléAu(1, "UP");
-        ascenseur.appeléAu(2, "UP");
 
-
-        ascenseur.prochaineAction();
-        ascenseur.prochaineAction();
-        ascenseur.prochaineAction();
-        ascenseur.prochaineAction();
-        ascenseur.prochaineAction();
-
-        String action = ascenseur.prochaineAction();
-
-        assertEquals("OPEN", action);
-    }
-
-    private void monteAu3(Ascenseur ascenseur) {
-        ascenseur.prochaineAction();
-        ascenseur.prochaineAction();
-        ascenseur.prochaineAction();
-    }
 }
